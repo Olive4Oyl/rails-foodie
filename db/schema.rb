@@ -34,7 +34,12 @@ ActiveRecord::Schema.define(version: 20161026154827) do
   end
 
   create_table "restaurants", force: :cascade do |t|
+    t.integer  "price"
     t.string   "name"
+    t.string   "address"
+    t.string   "state"
+    t.string   "city"
+    t.string   "country"
     t.string   "location"
     t.integer  "destination_id"
     t.datetime "created_at",     null: false
