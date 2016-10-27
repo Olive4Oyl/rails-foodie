@@ -1,1 +1,21 @@
-<h1>Welcome</h1>
+<% if !user_signed_in? %>
+	<h1>Welcome Foodie!</h1>
+<% else %>
+	<h1>Welcome</h1>
+
+<%= link_to 'Home', root_path %> 
+<%= link_to current_user.name, current_user %> 
+<br>
+<br>
+	<% @countries.collect do |country| %>
+		<%= country %><br>
+	<% end %>
+
+<% end %>
+
+
+
+
+
+
+

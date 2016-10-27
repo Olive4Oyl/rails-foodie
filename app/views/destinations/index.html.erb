@@ -1,0 +1,6 @@
+<h2>Search Your Destination Below</h2>
+
+<%= form_tag(destinations_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>

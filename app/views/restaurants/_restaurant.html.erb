@@ -1,0 +1,15 @@
+<% if !current_user.itineraries.empty? %>
+	<ul>
+		<li>
+			<% current_user.itineraries.each do |itinerary| %>
+				<% itinerary.restaurants.each do |restaurant| %>
+					<%= restaurant.name %>
+				<% end %>
+			<% end %>
+		</li>
+	</ul>
+<% else %>
+<br>
+<br>
+"Go out there and try some new cuisines." 
+<% end %>
