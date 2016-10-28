@@ -1,0 +1,17 @@
+<h1> New Itinerary </h1>
+
+<%= form_for @itinerary do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br>
+
+	<%= f.fields_for :destinations do |destination| %>
+		<%= destination.label :city %>
+		<%= destination.text_field :city, params[:city] %><br>
+		<%= destination.submit 'Search', name: :nil %>
+	<% end %><br>
+
+	<%= f.submit %>
+<% end %>
+
+
+

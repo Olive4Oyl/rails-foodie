@@ -1,13 +1,11 @@
 <h1> Hello! <%= current_user.name %> </h1>
 <br>
 
-Create a New Itinerary
-<br>
-<%=link_to 'Search a Destination', destinations_path %> 
-<br>
+
+<%=link_to 'Create a New Itinerary', new_itinerary_path %> 
 <br>
 <br>
-<br>
+
 <strong> Itineraries </strong>
 <%= render 'itineraries/itinerary' %>
 
