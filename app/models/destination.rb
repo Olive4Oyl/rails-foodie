@@ -1,7 +1,6 @@
 class Destination < ApplicationRecord
-	has_many :user_destinations
-	has_many :users, through: :user_destinations
-	has_many :restaurants
+	has_many :itinerary_destinations
+	has_many :destinations, through: :itinerary_destinations
 
 
 end

@@ -1,4 +1,4 @@
 class UserDestinationsController < ApplicationController
-	require "models/open_table"
+	require "open_table"
  	include OpenTable
 end

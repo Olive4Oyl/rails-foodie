@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026205307) do
+ActiveRecord::Schema.define(version: 20161031025411) do
 
   create_table "destinations", force: :cascade do |t|
     t.string   "city"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +24,13 @@ ActiveRecord::Schema.define(version: 20161026205307) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "itinerary_destinations", force: :cascade do |t|
+    t.integer  "destination_id"
+    t.integer  "itinerary_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -41,16 +49,8 @@ ActiveRecord::Schema.define(version: 20161026205307) do
     t.string   "city"
     t.string   "country"
     t.string   "location"
-    t.integer  "destination_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "user_destinations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "destination_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

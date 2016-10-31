@@ -6,7 +6,6 @@ class DestinationsController < ApplicationController
  	@destinations = Destination.search(params[:term])
  end
 
-
  def create
  end
 

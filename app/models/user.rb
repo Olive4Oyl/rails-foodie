@@ -4,9 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
-	has_many :user_destinations
-	has_many :destinations, through: :user_destinations
 	has_many :itineraries
+	has_many :destinations
 
 	def self.from_omniauth(auth)
 	    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

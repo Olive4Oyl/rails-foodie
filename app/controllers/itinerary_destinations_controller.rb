@@ -1,0 +1,3 @@
+class ItineraryDestinationsController < ApplicationController
+	
+end

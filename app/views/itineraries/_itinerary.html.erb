@@ -1,17 +1,14 @@
 <% if !current_user.itineraries.empty? %>
 	<ul>
-		<li>
-			<%= current_user.itineraries.collect do |itinerary| %>
-				<%= itinerary.name %>
-			<% end %>
-		</li>
+		<% current_user.itineraries.collect do |itinerary| %>
+			<li> <%= link_to itinerary.name, itinerary %> </li>
+		<% end %>
 	</ul>
 <% else %>
 <br>
 <br>
-"Get your grub on and create a new one." 
+"Get your grub on and create a new itinerary one." 
 <% end %>
-
 <br>
 <br>
 <br>

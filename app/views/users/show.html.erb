@@ -1,6 +1,7 @@
 <h1> Hello! <%= current_user.name %> </h1>
 <br>
 
+<%= link_to 'Edit User Info', edit_user_path(current_user) %><br><br>
 
 <%=link_to 'Create a New Itinerary', new_itinerary_path %> 
 <br>
@@ -9,7 +10,7 @@
 <strong> Itineraries </strong>
 <%= render 'itineraries/itinerary' %>
 
-<strong> Restaurants You've Visited </strong>
+<strong> Restaurants </strong>
 <%= render 'restaurants/restaurant' %>
 
 

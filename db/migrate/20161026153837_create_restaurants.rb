@@ -8,9 +8,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.0]
     	t.string :city
     	t.string :country
     	t.string :location
-    	
 
-    	t.integer :destination_id
 
       	t.timestamps
     end

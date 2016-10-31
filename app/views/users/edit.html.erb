@@ -1,0 +1,9 @@
+<h2>Edit Your Info </h2>
+
+<%= form_for current_user do |f| %>
+	<%= f.label :name %>: 
+	<%= f.text_field :name %><br><br>
+	<%= f.submit 'Edit your name' %>
+<% end %> <br>
+
+<%= link_to 'Back', user_path(current_user) %>

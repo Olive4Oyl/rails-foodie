@@ -2,14 +2,27 @@
 	<ul>
 		<li>
 			<% current_user.itineraries.each do |itinerary| %>
-				<% itinerary.restaurants.each do |restaurant| %>
-					<%= restaurant.name %>
+				<% if !itinerary.restaurants.empty? %>
+					<% @arr = [] %>
+					<% itinerary.restaurants.each do |restaurant| %>
+					<% @arr << restaurant %>
+						<% end %>
+					 <% end %>
 				<% end %>
-			<% end %>
+
+				<% if @arr != nil %>
+					<strong> Restaurants You've Visited </strong>
+
+					<% @arr.each do |restaurant| %>
+						<li> <%= restaurant.name %> </li>
+			    	<% end %>
+				<% else %> 
+			    	"No New Restaurants." 
+				<% end %>
 		</li>
 	</ul>
 <% else %>
 <br>
 <br>
-"Go out there and try some new cuisines." 
+"No New Restaurants." 
 <% end %>
