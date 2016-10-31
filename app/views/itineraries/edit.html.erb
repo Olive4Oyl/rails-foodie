@@ -1,4 +1,4 @@
-<h1> New Itinerary </h1>
+<h1>Edit Itinerary </h1>
 
 <%= form_for @itinerary do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
@@ -8,7 +8,7 @@
 	<%= f.fields_for :destinations do |destination| %>
 		<%= destination.label :city %>:
 		<%= destination.text_field :city%><br>
-  <% end %>
+	<% end %>
 
 	<%= f.submit %>
 <% end %> <br>

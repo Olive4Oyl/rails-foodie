@@ -2,5 +2,9 @@
 
 <%= link_to 'Home', user_path(current_user) %>
 
-<%= link_to 'Edit', edit_itinerary_path(@itinerary) %>
+<%= link_to 'Edit', edit_user_itinerary_path(@user, @itinerary) %>
+
+<%= link_to 'Delete', user_itinerary_path(@user, @itinerary), method: :delete %>
+
+
 

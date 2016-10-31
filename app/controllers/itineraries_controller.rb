@@ -1,7 +1,8 @@
 class ItinerariesController < ApplicationController
  require "open_table"
  include OpenTable
- before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
 
  def index
  end
@@ -13,41 +14,45 @@ class ItinerariesController < ApplicationController
 
  def create
  	@itinerary = Itinerary.new(itinerary_params)
-
- 		respond_to do |format|
- 			if @itinerary.save
- 				format.html { redirect_to user_itinerary_path(current_user, @itinerary), notice: 'Your itinerary was created.'}
- 			else
- 				format.html { render :new }
- 			end
- 		end
+ 	if @itinerary.valid?
+ 		@itinerary.save
+ 		redirect_to user_itinerary_path(current_user, @itinerary), notice: 'Your Itinerary was Created.'
+ 	else
+ 		render :new 
+ 	end
  end
 
  def show
- 	
  end
 
  def edit
  end
 
  def update
- 	@itinerary.update(itinerary_params)
+ 	if @itinerary.update(itinerary_params)
+ 		redirect_to user_itinerary_path(current_user, @itinerary), notice: 'Your Itinerary Has Been Updated.'
+ 	else
+ 		render :edit
+ 	end
  end
 
  def destroy
- 	@itinerary.destroy
- 	redirect_to current_user_path
+ 	@itinerary.delete
+ 	redirect_to @user
  end
 
 
  private
  def itinerary_params
- 	binding.pry
  	params.require(:itinerary).permit(:user_id, :name, destinations_attributes: [:city])
  end
 
  def set_itinerary
  	@itinerary = Itinerary.find_by(id: params[:id])
+ end
+
+ def set_user
+ 	@user = User.find_by(id: params[:user_id])
  end
 
 end

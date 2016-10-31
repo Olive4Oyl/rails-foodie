@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :establish_user, only: [:show, :update]
+	before_action :set_user, only: [:show, :update]
 	
 	def index
 		@users = User.all
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 		params.require(:user).permit(:name)
 	end
 
-	def establish_user
+	def set_user
 		@user = User.find_by(id: params[:id])
 	end
 

@@ -1,7 +1,7 @@
 <% if !current_user.itineraries.empty? %>
 	<ul>
 		<% current_user.itineraries.collect do |itinerary| %>
-			<li> <%= link_to itinerary.name, itinerary %> </li>
+			<li> <%= link_to itinerary.name, user_itinerary_path(itinerary) %> </li>
 		<% end %>
 	</ul>
 <% else %>
