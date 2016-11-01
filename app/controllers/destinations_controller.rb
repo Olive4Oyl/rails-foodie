@@ -3,7 +3,6 @@ class DestinationsController < ApplicationController
  include OpenTable
 
  def index
- 	@destinations = Destination.search(params[:term])
  end
 
  def create

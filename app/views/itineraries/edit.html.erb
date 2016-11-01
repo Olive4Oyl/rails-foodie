@@ -5,12 +5,19 @@
 	<%= f.label :name_the_itinerary %>:
 	<%= f.text_field :name %><br>
 
-	<%= f.fields_for :destinations do |destination| %>
-		<%= destination.label :city %>:
-		<%= destination.text_field :city%><br>
+	<%= f.fields_for :destinations do |dest_f| %>
+		<%= dest_f.label :city %>:
+		<%= dest_f.text_field :city%><br>
 	<% end %>
+
+	<%= f.fields_for :reservations, Reservation.new do |res_f| %>
+		<% @itinerary.destinations.each do |dest| %>
+			<%= res_f.collection_select :restaurant, Itinerary.search_by_destination(dest), :id, :name %>
+		<% end %>
+	<% end %> <br> <br>
 
 	<%= f.submit %>
 <% end %> <br>
 
 <%= link_to 'Back', user_path(current_user) %>
+
