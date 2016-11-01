@@ -31,6 +31,8 @@ class ItinerariesController < ApplicationController
 
  def update
  	if @itinerary.update(itinerary_params)
+ 		binding.pry 
+ 		# res = Reservation.create(itinerary_id: params[:id], restaurant_id: )
  		redirect_to user_itinerary_path(current_user, @itinerary), notice: 'Your Itinerary Has Been Updated.'
  	else
  		render :edit
@@ -45,7 +47,7 @@ class ItinerariesController < ApplicationController
 
  private
  def itinerary_params
- 	params.require(:itinerary).permit(:user_id, :name, destinations_attributes: [:city])
+ 	params.require(:itinerary).permit(:id, :user_id, :name, destinations_attributes: [:city], :reservation =>[:restaurant])
  end
 
  def set_itinerary
