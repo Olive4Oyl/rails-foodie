@@ -2,17 +2,17 @@
 
 <%= form_for @itinerary do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.label :name_the_itinerary %>:
-	<%= f.text_field :name %><br>
+	<%= f.label :name_the_itinerary, "Name the Itinerary" %>:
+	<%= f.text_field :name %><br><br>
 
 	<%= f.fields_for :destinations do |dest_f| %>
 		<%= dest_f.label :city %>:
 		<%= dest_f.text_field :city%><br>
-	<% end %>
+	<% end %><br>
 
 	<%= f.fields_for :reservations, Reservation.new do |res_f| %>
 		<% @itinerary.destinations.each do |dest| %>
-			<%= res_f.collection_select :restaurant, Itinerary.search_by_destination(dest), :id, :name %>
+			<%= res_f.collection_select :restaurant, Itinerary.search_by_destination(dest), :id, :name%>
 		<% end %>
 	<% end %> <br> <br>
 

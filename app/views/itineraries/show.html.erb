@@ -1,5 +1,9 @@
 <h1> <%= @itinerary.name %> </h1> <br> 
 
+<% @itinerary.destinations.collect do |dest| %>
+<h2>City That You're Visiting:</h2> <%= dest.city %>
+<% end %><br> <br>
+
 <%= link_to 'Home', user_path(current_user) %>
 
 <%= link_to 'Edit', edit_user_itinerary_path(@user, @itinerary) %>

@@ -2,7 +2,7 @@
 
 <%= form_for @itinerary do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.label :name_the_itinerary %>:
+	<%= f.label :name_the_itinerary, "Name the Itinerary" %>:
 	<%= f.text_field :name %><br>
 
 	<%= f.fields_for :destinations do |destination| %>
