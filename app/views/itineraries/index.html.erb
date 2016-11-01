@@ -1,0 +1,9 @@
+<h1> Recent Itineraries </h1>
+
+<ul>
+	<% @itineraries.each do |itinerary| %>
+		<li> <%= itinerary.name %> </li>
+<% end %>
+</ul> <br>
+
+<%= link_to 'Back', user_path(current_user) %><br>

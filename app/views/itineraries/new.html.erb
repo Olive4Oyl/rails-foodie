@@ -3,12 +3,17 @@
 <%= form_for @itinerary do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.label :name_the_itinerary, "Name the Itinerary" %>:
-	<%= f.text_field :name %><br>
+	<%= f.text_field :name %><br><br>
 
 	<%= f.fields_for :destinations do |destination| %>
 		<%= destination.label :city %>:
-		<%= destination.text_field :city%><br>
+		<%= destination.text_field :city%><br><br>
   <% end %>
+
+  <%= f.fields_for :reservations, @itinerary.reservations.build do |res_f| %>
+	<%= res_f.label :reserved_time, "Reserved Time" %>:
+	<%= res_f.text_field :reserved_time %><br>
+	<% end %><br>
 
 	<%= f.submit %>
 <% end %> <br>

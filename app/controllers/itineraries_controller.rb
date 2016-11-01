@@ -5,17 +5,19 @@ class ItinerariesController < ApplicationController
   before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
 
  def index
+ 	@itineraries = Itinerary.recent
  end
 
  def new
  	@itinerary = Itinerary.new
  	@itinerary.destinations.build()
+ 	@itinerary.reservations.build()
  end
 
  def create
  	@itinerary = Itinerary.new(itinerary_params)
- 	if @itinerary.valid?
- 		@itinerary.save
+ 	if @itinerary.save
+		
  		redirect_to user_itinerary_path(current_user, @itinerary), notice: 'Your Itinerary was Created.'
  	else
  		render :new 
@@ -23,15 +25,15 @@ class ItinerariesController < ApplicationController
  end
 
  def show
+ 	binding.pry
  end
 
  def edit
-
+ 	
  end
 
  def update
  	if @itinerary.update(itinerary_params)
- 		binding.pry 
  		# res = Reservation.create(itinerary_id: params[:id], restaurant_id: )
  		redirect_to user_itinerary_path(current_user, @itinerary), notice: 'Your Itinerary Has Been Updated.'
  	else
@@ -47,7 +49,7 @@ class ItinerariesController < ApplicationController
 
  private
  def itinerary_params
- 	params.require(:itinerary).permit(:id, :user_id, :name, destinations_attributes: [:city], :reservation =>[:restaurant])
+ 	params.require(:itinerary).permit(:id, :user_id, :name, reservations_attributes: [:reserved_time], destinations_attributes: [:city])
  end
 
  def set_itinerary

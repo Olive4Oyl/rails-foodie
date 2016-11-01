@@ -3,15 +3,17 @@
 
 <%= link_to 'Edit User Info', edit_user_path(current_user) %><br><br>
 
-<%=link_to 'Create a New Itinerary', new_itinerary_path %> 
+<%=link_to 'Create a New Itinerary', new_user_itinerary_path(current_user) %> 
 <br>
 <br>
-
+<br>
 <strong> Itineraries </strong>
 <%= render 'itineraries/itinerary' %>
 
 <strong> Restaurants </strong>
-<%= render 'restaurants/restaurant' %>
+<%= render 'restaurants/restaurant' %><br><br>
+
+<%= button_to 'Show Recent Itinerary', search_path, method: 'get' %>
 
 
 

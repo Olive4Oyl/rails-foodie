@@ -4,6 +4,10 @@
 <h2>City That You're Visiting:</h2> <%= dest.city %>
 <% end %><br> <br>
 
+<% @itinerary.reservations.collect do |res| %>
+	Reserved Time: <%= res.reserved_time %>
+<% end %><br><br>
+
 <%= link_to 'Home', user_path(current_user) %>
 
 <%= link_to 'Edit', edit_user_itinerary_path(@user, @itinerary) %>

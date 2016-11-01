@@ -4,17 +4,17 @@ class Itinerary < ApplicationRecord
 	has_many :destinations, through: :itinerary_destinations
 	has_many :reservations
 	has_many :restaurants, through: :reservations
+	accepts_nested_attributes_for :reservations
 
 	scope :recent, -> { order("itineraries.updated_at DESC") }
 
 
-	def destinations_attributes=(destination)
-    	destination.values.each do |destination_attribute| 
+	def destinations_attributes=(attributes)
+    	attributes.values.each do |destination_attribute| 
     		destination = Destination.find_or_create_by(destination_attribute)
-    			self.destinations << destination
+    		self.destinations << destination
     	end
     end
-
 
     def self.search_by_destination(dest)
 		api = OpenTable::Client.new 
