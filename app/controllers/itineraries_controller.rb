@@ -16,8 +16,8 @@ class ItinerariesController < ApplicationController
 
  def create
  	@itinerary = Itinerary.new(itinerary_params)
- 	if @itinerary.save
-		
+ 	if @itinerary.valid?
+ 		@itinerary.save
  		redirect_to user_itinerary_path(current_user, @itinerary), notice: 'Your Itinerary was Created.'
  	else
  		render :new 
@@ -25,7 +25,7 @@ class ItinerariesController < ApplicationController
  end
 
  def show
- 	binding.pry
+
  end
 
  def edit

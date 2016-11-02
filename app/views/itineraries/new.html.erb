@@ -8,12 +8,14 @@
 	<%= f.fields_for :destinations do |destination| %>
 		<%= destination.label :city %>:
 		<%= destination.text_field :city%><br><br>
-  <% end %>
+  	<% end %>
 
-  <%= f.fields_for :reservations, @itinerary.reservations.build do |res_f| %>
+  	<%= f.fields_for :reservations, @itinerary.reservations.build do |res_f| %>
 	<%= res_f.label :reserved_time, "Reserved Time" %>:
 	<%= res_f.text_field :reserved_time %><br>
 	<% end %><br>
+
+	
 
 	<%= f.submit %>
 <% end %> <br>
