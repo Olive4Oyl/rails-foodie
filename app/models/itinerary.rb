@@ -5,6 +5,7 @@ class Itinerary < ApplicationRecord
 	has_many :reservations
 	has_many :restaurants, through: :reservations
 	accepts_nested_attributes_for :reservations
+	validates :name, presence: true
 
 	scope :recent, -> { order("itineraries.updated_at DESC") }
 
