@@ -25,7 +25,8 @@ class ItinerariesController < ApplicationController
  end
 
  def show
-
+ 	@reservation = @itinerary.reservations.first
+ 	@restaurants = Itinerary.search_by_destination(@itinerary.destinations.first)
  end
 
  def edit
