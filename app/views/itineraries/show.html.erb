@@ -6,14 +6,10 @@
 
 <% @itinerary.reservations.collect do |res| %>
 <h3> Reserved Time:</h3> <%= res.reserved_time %>
-<% end %><br><br><br>
+<% end %><br><br>
 
-<%= form_for @reservation do |f| %>
-    <%= f.text_field :reserved_time %>
-    <%= f.hidden_field :itinerary_id, :value => @itinerary.id %>
-	<%= f.collection_radio_buttons(:restaurant_id, @restaurants, :id, :name) %>
-	<%= f.submit "Add a restuarant" %>
-<% end %><br>
+<h3> Available Restuarants: </h3>
+<%= link_to 'Add a Restaurant', edit_user_reservation_path(@user, @reservation) %><br><br>
 
 
 <%= link_to 'Home', user_path(current_user) %>

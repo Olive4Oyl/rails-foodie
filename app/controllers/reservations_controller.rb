@@ -1,6 +1,12 @@
 class ReservationsController < ApplicationController
 	require "open_table"
 	include OpenTable
+	before_action :set_reservation, only: [:edit, :update]
+	before_action :set_user, only: [:edit, :update]
+
+	def edit
+		binding.pry
+	end
 
 	def update
 		@reservation = Reservation.new(res_params)
@@ -16,5 +22,13 @@ class ReservationsController < ApplicationController
 	def res_params
 		params.require(:reservation).permit(:itinerary_id, :restaurant_id, :reserved_time)
 	end
+
+	def set_reservation
+		@reservation = Reservation.find_by(id: params[:id])
+	end
+
+	def set_user
+ 		@user = User.find_by(id: params[:user_id])
+ 	end
 
 end
