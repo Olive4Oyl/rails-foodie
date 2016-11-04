@@ -1,23 +1,4 @@
 <h1>Edit Itinerary </h1>
 
-<%= form_for @itinerary do |f| %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.label :name_the_itinerary, "Name the Itinerary" %>:
-	<%= f.text_field :name %><br><br>
-
-	<%= f.fields_for :destinations do |dest_f| %>
-		<%= dest_f.label :city %>:
-		<%= dest_f.text_field :city%><br>
-	<% end %><br>
-
-	<%= f.fields_for :reservations do |res_f| %>
-	<%= res_f.label :reserved_time, "Reserved Time" %>:
-	<%= res_f.text_field :reserved_time %><br>
-	<% end %><br>
-
-
-	<%= f.submit %>
-<% end %> <br>
-
-<%= link_to 'Back', user_path(current_user) %>
+<%= render 'form' %>
 

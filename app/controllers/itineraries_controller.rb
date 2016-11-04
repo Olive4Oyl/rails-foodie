@@ -50,7 +50,7 @@ class ItinerariesController < ApplicationController
 
  private
  def itinerary_params
- 	params.require(:itinerary).permit(:id, :user_id, :name, reservations_attributes: [:reserved_time], destinations_attributes: [:city])
+ 	params.require(:itinerary).permit(:id, :user_id, :name, reservations_attributes: [:reserved_time], destinations_attributes: [:city, :state])
  end
 
  def set_itinerary

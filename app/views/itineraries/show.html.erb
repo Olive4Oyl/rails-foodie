@@ -8,9 +8,10 @@
 <h3> Reserved Time:</h3> <%= res.reserved_time %>
 <% end %><br><br>
 
-<h3> Available Restuarants: </h3>
-<%= link_to 'Add a Restaurant', edit_user_reservation_path(@user, @reservation) %><br><br>
+<h3> Add a Restaurant: </h3>
+<%= link_to 'Add a Restaurant', edit_user_itinerary_reservation_path(@user, @itinerary) %><br><br>
 
+<h3> Restaurants </h3>
 
 <%= link_to 'Home', user_path(current_user) %>
 

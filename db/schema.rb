@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101190837) do
+ActiveRecord::Schema.define(version: 20161104173635) do
 
   create_table "destinations", force: :cascade do |t|
     t.string   "city"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "state"
   end
 
   create_table "itineraries", force: :cascade do |t|

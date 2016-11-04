@@ -22,16 +22,24 @@ class Itinerary < ApplicationRecord
 		city_data = api.restaurants(:city => dest.city)
 		restaurants = city_data['restaurants']
 		# {"id"=>7267, "name"=>"10pin Bowling Lounge", 
-		# "address"=>"330 N State Street", "city"=>"Chicago", 
+		# "address"=>"330 N State Street", 
+		#{}"city"=>"Chicago", 
 		# "state"=>"IL", "area"=>"Chicago / Illinois", 
 		# "postal_code"=>"60610", "country"=>"US", 
 		# "phone"=>"3126440300x", "lat"=>41.888634, 
 		# "lng"=>-87.628091, "price"=>4, 
 		# "reserve_url"=>"http://www.opentable.com/single.aspx?rid=7267", "mobile_reserve_url"=>"http://mobile.opentable.com/opentable/?restId=7267", "image_url"=>"https://www.opentable.com/img/restimages/7267.jpg"}
 		restaurants.collect do |restaurant|
-			attributes = {name: restaurant["name"], address: restaurant["address"], price: restaurant["price"]}
+			attributes = {name: restaurant["name"], address: restaurant["address"], price: restaurant["price"], state: restaurant["state"]}
 			Restaurant.find_or_create_by(attributes)
+		end.select do |restaurant|
+			restaurant.state == dest.state
 		end
+
+		# binding.pry
+		# if restaurants.select do |restaurant|
+		# 	@itinerary.state == restaurant.state 
+		# end
 
     end
 

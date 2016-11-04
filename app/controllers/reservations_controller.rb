@@ -5,22 +5,22 @@ class ReservationsController < ApplicationController
 	before_action :set_user, only: [:edit, :update]
 
 	def edit
-		binding.pry
+		@reservation = Reservation.find_by(id: params[:id])
+		@itinerary = Itinerary.find_by(id: params[:itinerary_id])
+		@restaurants = Itinerary.search_by_destination(@itinerary.destinations.first)
 	end
 
 	def update
-		@reservation = Reservation.new(res_params)
-		if @reservation.valid?
- 			@reservation.save
+		if @reservation.update(res_params)
  			redirect_to user_itinerary_path(current_user, @reservation.itinerary), notice: 'Your Reservation was Created.'
  		else
- 			render :template => 'itinerariese/new'
+ 			render :template => 'itineraries/new'
  		end
 	end
 
 	private
 	def res_params
-		params.require(:reservation).permit(:itinerary_id, :restaurant_id, :reserved_time)
+		params.require(:reservation).permit(:itinerary_id, :restaurant_id)
 	end
 
 	def set_reservation
